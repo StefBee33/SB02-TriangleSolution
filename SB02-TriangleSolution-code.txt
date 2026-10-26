@@ -1,0 +1,541 @@
+
+ ;
+ ; Copyright (C) 1979-1981 by Steffen Beyer.
+ ;
+ ; This program is free software, you can redistribute it and/or modify it
+ ; under the terms of the GNU General Public License as published by the
+ ; Free Software Foundation, either version 3 of the License, or
+ ; (at your option) any later version.
+ ;
+
+LBL
+ A 
+IFF
+ 00
+step0079
+STO
+ 01
+RTN
+LBL
+ B 
+IFF
+ 00
+step0082
+STO
+ 02
+RTN
+LBL
+ C 
+IFF
+ 00
+step0085
+STO
+ 03
+RTN
+LBL
+A' 
+IFF
+ 00
+step0088
+STO
+ 04
+RTN
+LBL
+B' 
+IFF
+ 00
+step0091
+STO
+ 05
+RTN
+LBL
+C' 
+IFF
+ 00
+step0094
+STO
+ 06
+RTN
+LBL
+ D 
+INV
+STF
+ 00
+INV
+STF
+ 01
+ 5 
+OP 
+ 17
+ 0 
+STO
+ 01
+STO
+ 02
+STO
+ 03
+STO
+ 04
+STO
+ 05
+STO
+ 06
+RTN
+step0079:
+RCL
+ 01
+RTN
+step0082:
+RCL
+ 02
+RTN
+step0085:
+RCL
+ 03
+RTN
+step0088:
+RCL
+ 04
+RTN
+step0091:
+RCL
+ 05
+RTN
+step0094:
+RCL
+ 06
+RTN
+step0097:
+ 0 
+1/X
+RTN
+LBL
+ E 
+IFF
+ 01
+step0522
+ 0 
+STO
+ 09
+STO
+ 10
+ 1 
+STO
+ 07
+ 1 
+ 1 
+STO
+ 08
+ 3 
+STO
+ 00
+CP 
+step0122:
+RC*
+ 07
+ EQ
+step0135
+RCL
+ 07
+SUM
+ 10
+ST*
+ 08
+OP 
+ 28
+step0135:
+OP 
+ 27
+DSZ
+ 00
+step0122
+ 3 
+STO
+ 00
+step0144:
+RC*
+ 07
+ EQ
+step0157
+RCL
+ 07
+ST*
+ 08
+OP 
+ 29
+OP 
+ 28
+step0157:
+OP 
+ 27
+DSZ
+ 00
+step0144
+ 3 
+X<>T
+ ( 
+RCL
+ 08
+ - 
+ 1 
+ 1 
+ ) 
+INV
+ EQ
+step0097
+RCL
+ 09
+X<>T
+ EQ
+step0097
+ 9 
+EXC
+ 10
+INV
+SUM
+ 10
+ 1 
++/-
+INV
+COS
+EE 
+INV
+EE 
+STO
+ 00
+ 0 
+ EQ
+step0302
+ 2 
+ EQ
+step0337
+CP 
+RC*
+ 10
+ EQ
+step0427
+RCL
+ 11
+STO
+ 10
+RCL
+ 12
+STO
+ 08
+RCL
+ 13
+STO
+ 07
+ 3 
+INV
+SUM
+ 13
+SUM
+ 10
+SUM
+ 08
+ ( 
+RC*
+ 11
+X2
+ + 
+RC*
+ 12
+X2
+ - 
+ 2 
+ * 
+RC*
+ 11
+ * 
+RC*
+ 12
+ * 
+RC*
+ 07
+COS
+ ) 
+SQRT
+ST*
+ 13
+SBR
+step0274
+ ( 
+RCL
+ 00
+ - 
+RC*
+ 10
+ - 
+RC*
+ 07
+ ) 
+ST*
+ 08
+step0270:
+STF
+ 00
+ 0 
+RTN
+step0274:
+ ( 
+ ( 
+RC*
+ 12
+X2
+ + 
+RC*
+ 13
+X2
+ - 
+RC*
+ 11
+X2
+ ) 
+ / 
+ 2 
+ / 
+RC*
+ 12
+ / 
+RC*
+ 13
+ ) 
+INV
+COS
+ST*
+ 10
+RTN
+step0302:
+ 4 
+STO
+ 10
+SBR
+step0274
+ 5 
+STO
+ 10
+RCL
+ 11
+EXC
+ 13
+EXC
+ 12
+STO
+ 11
+SBR
+step0274
+ ( 
+RCL
+ 00
+ - 
+RCL
+ 04
+ - 
+RCL
+ 05
+ ) 
+STO
+ 06
+GTO
+step0270
+step0337:
+ ( 
+ 1 
+ 5 
+ - 
+RCL
+ 12
+ - 
+RCL
+ 13
+ ) 
+STO
+ 07
+ ( 
+RCL
+ 00
+ - 
+RC*
+ 12
+ - 
+RC*
+ 13
+ ) 
+ST*
+ 07
+ ( 
+RCL
+ 11
+STO
+ 12
+ + 
+ 1 
+ - 
+ ( 
+INT
+ / 
+ 4 
+ ) 
+INT
+ * 
+ 2 
+ ) 
+STO
+ 13
+STO
+ 07
+ 3 
+SUM
+ 12
+SUM
+ 07
+SBR
+step0412
+ ( 
+ 6 
+ - 
+RCL
+ 11
+ - 
+RCL
+ 13
+ ) 
+STO
+ 13
+STO
+ 07
+ 3 
+SUM
+ 07
+SBR
+step0412
+GTO
+step0270
+step0412:
+ ( 
+RC*
+ 07
+SIN
+ / 
+RC*
+ 12
+SIN
+ * 
+RC*
+ 11
+ ) 
+ST*
+ 13
+RTN
+step0427:
+RCL
+ 13
+STO
+ 11
+ ( 
+ 1 
+ 5 
+ - 
+RCL
+ 13
+ - 
+RCL
+ 10
+ ) 
+STO
+ 12
+STO
+ 07
+RCL
+ 10
+STO
+ 08
+ 3 
+INV
+SUM
+ 11
+INV
+SUM
+ 12
+INV
+SUM
+ 08
+RC*
+ 11
+X<>T
+RC*
+ 12
+INV
+ GE
+step0470
+STF
+ 01
+step0470:
+ ( 
+RC*
+ 12
+ / 
+RC*
+ 11
+ * 
+RC*
+ 13
+SIN
+ ) 
+INV
+SIN
+ST*
+ 07
+step0485:
+ ( 
+RCL
+ 00
+ - 
+RC*
+ 13
+ - 
+RC*
+ 07
+ ) 
+ST*
+ 10
+ ( 
+RC*
+ 10
+SIN
+ / 
+RC*
+ 13
+SIN
+ * 
+RC*
+ 11
+ ) 
+ST*
+ 08
+INV
+IFF
+ 01
+step0270
+STF
+ 00
+ 0 
+1/X
+ 2 
+RTN
+step0522:
+INV
+STF
+ 01
+ ( 
+RCL
+ 00
+ - 
+RC*
+ 07
+ ) 
+ST*
+ 07
+GTO
+step0485
